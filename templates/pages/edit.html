@@ -10,36 +10,37 @@
  
  
  
-<form action="/animals" method="post">
+<form action="/animals/{{animal.id}}" method="post">
     <div>
         <label for="Name">Name:</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" value="{{animal.name}}">
     </div>
 
     <div>
         <label for="dob">Date of Birth:</label>
-        <input type="text" id="dob" name="dob">
+        <input type="text" id="dob" name="dob" value="{{animal.dob}}">
     </div>
 
     <div>
         <label for="type">Type of Animal:</label>
-        <input type="text" id="type" name="type">
+        <input type="text" id="type" name="type" value="{{animal.type}}">
     </div>
 
     <div>
         <label for="description">About Animal:</label>
-        <input type="text" id="description" name="description">
+        <input type="text" id="description" name="description" value="{{animal.description}}">
     </div>
     <div>
         <label for="shelter">Shelter:</label>
         <select id="shelter" name="shelter_id">
+            <option value="{{animals_current_shelter.id}}">{{animals_current_shelter.name}}</option>
             {% for shelter in all_shelters %}}
-                <option value="{{shelter.id}}">{{shelter.name}} {{shelter.id}}</option>
+                <option value="{{shelter.id}}" > {{shelter.name}}</option>
             {% endfor %}
         </select>
     </div>
 
-    <button type="submit">Add Animal</button>
+    <button type="submit">Submit Change</button>
  
  
- {% endblock %}
+{% endblock %}
