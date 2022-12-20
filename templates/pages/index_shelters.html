@@ -1,0 +1,29 @@
+<head> 
+    <header> <h1>Terry's Toots</h1> </header>
+</head>
+ 
+{% extends "base.html" %} 
+{% block content %} 
+ 
+<div>
+    <h3>Partnered Shelters</h3>
+    
+    {% for shelter in all_shelters %}
+    <li><div class="content">
+        '{{ shelter.name }}'
+        <div class="information">
+            <span> location: {{shelter.location}}</span>
+            <a href="/shelter/{{shelter.id}}">More information</a></p>
+        </div>
+        <hr>
+    </li></div>
+    {% endfor %}
+   
+    
+   
+</div>
+
+
+ 
+ 
+{% endblock %}

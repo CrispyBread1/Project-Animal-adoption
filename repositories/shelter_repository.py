@@ -18,18 +18,18 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        shelter = Shelter(row['name'], row['location'], row['contact']. row['id'])
+        shelter = Shelter(row['name'], row['location'], row['contact'], row['id'])
         shelters.append(shelter)
     return shelters
 
 def select(id):
     shelter = None
-    sql = "SELECT * FROM users WHERE id = %s"
+    sql = "SELECT * FROM shelters WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        shelter = Shelter(result['name'], result['location'], result['contact']. result['id'])
+        shelter = Shelter(result['name'], result['location'], result['contact'], result['id'])
     return shelter 
 
 def delete_all():

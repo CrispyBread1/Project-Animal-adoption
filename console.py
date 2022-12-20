@@ -25,3 +25,5 @@ animal3 = Animal("Big Bird", "3/7/18", "Penguin", "Biggest bird", shelter1)
 animal_repository.save(animal3)
 animal4 = Animal("Furball", "7/12/22", "Brown Bear", "Favourite thing is cuddles", shelter1)
 animal_repository.save(animal4)
+
+print(animal_repository.select_all())

@@ -1,0 +1,18 @@
+<head> 
+    <header> <h1>Terry's Toots</h1> </header>
+</head>
+ 
+{% extends "base.html" %} 
+{% block content %} 
+<ul>
+    <div>
+        <h2>{{ animal.name }}</h2>
+        <li>Animal: {{ animal.type }}</li>
+        <li>Born: {{ animal.dob }}</li>
+        <li>Shelter: <a href="/shelter/{{animal.shelter.id}}">{{animal.shelter.id}}</a></li>
+        <h4>About me </h4>
+        <li>{{ animal.description }}</li>
+        
+    </div>
+</ul>
+{% endblock %}

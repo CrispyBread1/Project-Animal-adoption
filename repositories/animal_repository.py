@@ -19,7 +19,7 @@ def select_all():
 
     for row in results:
         shelter = shelter_repository.select(row['shelter_id'])
-        animal = Animal(row['name'], row['dob'], row['type'], row['description'], shelter)
+        animal = Animal(row['name'], row['dob'], row['type'], row['description'], shelter, row['id'])
         animals.append(animal)
     return animals
 
@@ -31,7 +31,7 @@ def select(id):
 
     if result is not None:
         shelter = shelter_repository.select(result['shelter_id'])
-        animal = Animal(result['name'], result['dob'], result['type'], result['description'], shelter)
+        animal = Animal(result['name'], result['dob'], result['type'], result['description'], shelter, result['id'])
     return animal
 
 def delete_all():

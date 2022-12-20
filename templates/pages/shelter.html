@@ -1,0 +1,31 @@
+<head> 
+    <header> <h1>Terry's Toots</h1> </header>
+</head>
+ 
+{% extends "base.html" %} 
+{% block content %} 
+
+    <div>
+        <h2>{{ shelter.name }}</h2>
+        <p>Location: {{ shelter.location }}</p>
+        <h9>Contact Us: {{shelter.contact}}</h9>
+        <div>
+            
+            {% for animal in all_animals %}
+            {% if animal.id == shelter.id %}
+            <li><div class="content">
+            '{{ animal.name }}'
+                <div class="information">
+                    <span> Animal: {{animal.type}}</span>
+                    <div><a href="/animals/{{animal.id}}">More information</a>
+                    </div>
+                </div>
+                <hr>
+            {% elif pass %}
+            </li></div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
