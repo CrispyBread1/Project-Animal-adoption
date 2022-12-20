@@ -1,0 +1,45 @@
+<head> 
+    <header> <h1>Terry's Toots</h1> </header>
+ </head>
+ 
+ 
+ {% extends "base.html" %} 
+ {% block content %} 
+ 
+ <h3>Edit</h3>
+ 
+ 
+ 
+<form action="/animals" method="post">
+    <div>
+        <label for="Name">Name:</label>
+        <input type="text" id="name" name="name">
+    </div>
+
+    <div>
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob">
+    </div>
+
+    <div>
+        <label for="type">Type of Animal:</label>
+        <input type="text" id="type" name="type">
+    </div>
+
+    <div>
+        <label for="description">About Animal:</label>
+        <input type="text" id="description" name="description">
+    </div>
+    <div>
+        <label for="shelter">Shelter:</label>
+        <select id="shelter" name="shelter_id">
+            {% for shelter in all_shelters %}}
+                <option value="{{shelter.id}}">{{shelter.name}} {{shelter.id}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit">Add Animal</button>
+ 
+ 
+ {% endblock %}

@@ -27,7 +27,7 @@ def show_shelter(id):
     shelter = shelter_repository.select(id)
     return render_template("pages/shelter.html", all_animals = animals, shelter = shelter)
 
-@adoption_blueprint.route("/animals/<id>/delete", method =["POST"])
+@adoption_blueprint.route("/animals/<id>/delete", methods=["POST"])
 def destroy(id):
     animal_repository.delete(id)
     return redirect("/animals")
@@ -48,3 +48,22 @@ def create():
     animal = Animal(name, dob, type, description, shelter)
     animal_repository.save(animal)
     return redirect('/animals')
+
+@adoption_blueprint.route("/animals/<id>/edit")
+def edit(id):
+    animal = animal_repository.select(id)
+    shelters = shelter_repository.select_all()
+    return render_template("tasks/edit.html", animal = animal, all_shelters = shelters)
+
+
+@adoption_blueprint.route("/animals/<id>", methods=['POST'])
+def update(id):
+    name = request.form['name']
+    dob = request.form['dob']
+    type = request.form['type']
+    description = request.form['description']
+    shelter_id = request.form['shelter_id']
+    shelter = shelter_repository.select(shelter_id)
+    animal = Animal(name, dob, type, description, shelter, id)
+    animal_repository.update(animal)
+    return redirect("/animals")

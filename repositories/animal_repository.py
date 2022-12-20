@@ -48,3 +48,5 @@ def update(animal):
     values = [animal.name, animal.dob, animal.type, animal.description, animal.shelter.id, animal.id]
     run_sql(sql, values)
 
+def animals_for_shelter(id):
+    pass
