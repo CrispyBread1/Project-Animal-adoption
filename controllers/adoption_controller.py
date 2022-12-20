@@ -27,12 +27,17 @@ def show_shelter(id):
     shelter = shelter_repository.select(id)
     return render_template("pages/shelter.html", all_animals = animals, shelter = shelter)
 
+@adoption_blueprint.route("/animals/<id>/delete", method =["POST"])
+def destroy(id):
+    animal_repository.delete(id)
+    return redirect("/animals")
+
 @adoption_blueprint.route("/animals/new")
 def new():
     all_shelters = shelter_repository.select_all()
-    return render_template("animals/new.html", all_shelters = all_shelters)
+    return render_template("pages/new.html", all_shelters = all_shelters)
 
-@adoption_blueprint.route("/animals" methods=["POST"])
+@adoption_blueprint.route("/animals", methods=["POST"])
 def create():
     name = request.form['name']
     dob = request.form['dob']
