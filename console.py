@@ -6,6 +6,12 @@ import repositories.animal_repository as animal_repository
 import repositories.shelter_repository as shelter_repository
 
 
+
+animal_repository.delete_all()
+shelter_repository.delete_all()
+
+
+
 shelter1 = Shelter("Furys", "Edinburgh", "furys@gmail.com")
 shelter_repository.save(shelter1)
 shelter2 = Shelter("4 Paws", "Edinburgh", "4paws@gmail.com")

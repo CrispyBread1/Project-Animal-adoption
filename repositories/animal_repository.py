@@ -4,10 +4,10 @@ from models.animal import Animal
 import repositories.shelter_repository as shelter_repository
 
 def save(animal):
-    sql = 'INSERT INTO animals (name, dob, type, description, shelter_id) VALUES: (%s, %s, %s, %s) RETURNING *'
+    sql = 'INSERT INTO animals (name, dob, type, description, shelter_id) VALUES (%s, %s, %s, %s, %s) RETURNING *'
     values = (animal.name, animal.dob, animal.type, animal.description, animal.shelter.id)
     results = run_sql(sql, values)
-    id = results['id']
+    id = results[0]['id']
     animal.id = id
     return animal
 

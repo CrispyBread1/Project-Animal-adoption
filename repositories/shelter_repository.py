@@ -7,7 +7,7 @@ def save(shelter):
     sql = "INSERT INTO shelters (name, location, contact) VALUES (%s, %s, %s) RETURNING *"
     values = [shelter.name, shelter.location, shelter.contact]
     results = run_sql(sql, values)
-    id = results['id']
+    id = results[0]['id']
     shelter.id = id 
     return shelter
 
