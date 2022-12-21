@@ -18,8 +18,12 @@ body{
 
 .menu a{
     text-decoration: none;
+    
 }
 
+.men:hover{
+    text-decoration: underline;
+}
 .content{
     display: flex;
     flex-direction: column;

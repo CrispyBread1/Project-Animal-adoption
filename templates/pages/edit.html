@@ -31,9 +31,11 @@
     <div>
         <label for="shelter">Shelter:</label>
         <select id="shelter" name="shelter_id">
-            <option value="{{animals_current_shelter.id}}">{{animals_current_shelter.name}}</option>
-            {% for shelter in all_shelters %}}
-                <option value="{{shelter.id}}" > {{shelter.name}}</option>
+            <option value="{{animals_current_shelter}}">{{all_shelters[animals_current_shelter - 1].name}}</option>
+            {% for shelter in all_shelters %}
+                {% if shelter.id != animals_current_shelter %}
+                    <option value="{{shelter.id}}" > {{shelter.name}}</option>
+                {% endif %}
             {% endfor %}
         </select>
     </div>

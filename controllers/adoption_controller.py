@@ -19,7 +19,8 @@ def index_shelter():
 @adoption_blueprint.route("/animals/<id>")
 def show(id):
     animal = animal_repository.select(id)
-    return render_template("pages/more_information.html", animal = animal)
+    shelter = shelter_repository.select(animal.shelter)
+    return render_template("pages/more_information.html", animal = animal, shelter = shelter)
 
 @adoption_blueprint.route("/shelter/<id>")
 def show_shelter(id):
@@ -54,10 +55,6 @@ def edit(id):
     animal = animal_repository.select(id)
     shelters = shelter_repository.select_all()
     animals_current_shelter = animal.shelter
-    for shelter in shelters:
-        if shelter.id == animals_current_shelter.id:
-            shelters.remove(shelter)
-            break  
     return render_template("pages/edit.html", animal = animal, all_shelters = shelters, animals_current_shelter = animals_current_shelter)
 
 
