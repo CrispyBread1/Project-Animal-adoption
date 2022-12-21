@@ -50,3 +50,10 @@ def update(animal):
 
 def animals_for_shelter(id):
     pass
+
+def select_all_images():
+    sql = "SELECT img FROM animals"
+    images = run_sql(sql)
+    return images
+
+    

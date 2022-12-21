@@ -3,8 +3,15 @@ from flask import render_template, Blueprint, redirect, request
 from repositories import animal_repository
 from repositories import shelter_repository
 from models.animal import Animal
+from controllers.functions import *
 
 adoption_blueprint = Blueprint("animals", __name__)
+
+@adoption_blueprint.route("/")
+def home():
+    images = animal_repository.select_all_images()
+    image_of_the_day = random_image_generator(images)
+    return render_template("/index.html", image_of_the_day = image_of_the_day)
 
 @adoption_blueprint.route("/animals")
 def index():
