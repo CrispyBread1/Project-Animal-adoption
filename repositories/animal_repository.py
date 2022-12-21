@@ -28,7 +28,7 @@ def select(id):
     sql = "SELECT * FROM animals WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-
+    
     if result is not None:
         shelter = shelter_repository.select(result['shelter_id'])
         animal = Animal(result['name'], result['dob'], result['type'], result['description'], shelter, result['id'], result['img'])
