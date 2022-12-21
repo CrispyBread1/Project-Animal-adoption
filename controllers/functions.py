@@ -2,7 +2,13 @@ import random
 
 def random_image_generator(images):
     num = random.randrange(0, len(images))
-    image_of_the_day = images[int(num)]
-    for link in image_of_the_day:
-        image_of_the_day = link
-        return image_of_the_day
+    
+    animal = images[int(num)]
+    animal_of_the_day = []
+    animal_of_the_day.append(animal.name)
+    animal_of_the_day.append(animal.img)
+    
+    return animal_of_the_day
+    
+
+    

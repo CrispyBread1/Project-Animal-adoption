@@ -9,9 +9,11 @@ adoption_blueprint = Blueprint("animals", __name__)
 
 @adoption_blueprint.route("/")
 def home():
-    images = animal_repository.select_all_images()
-    image_of_the_day = random_image_generator(images)
-    return render_template("/index.html", image_of_the_day = image_of_the_day)
+    animals = animal_repository.select_all()
+    name_and_link = random_image_generator(animals)
+    animal_of_day_name = name_and_link[0]
+    animal_of_day_img = name_and_link[1]
+    return render_template("/index.html", image_of_the_day = animal_of_day_img, animal_of_day_name = animal_of_day_name)
 
 @adoption_blueprint.route("/animals")
 def index():
