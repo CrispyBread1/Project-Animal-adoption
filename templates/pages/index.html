@@ -5,18 +5,21 @@
  
 <div>
     <h3>All of Terry's Toots</h3>
+    
     {% for animal in all_animals %}
-    <img src="img/shetlandpony">
+    <div class="img">
+    <img src="{{ animal.img }}" width="380" height="250">
     <div class="content">
         '{{ animal.name }}'
-        <div class="information">
+        <div>
             <span> Animal: {{animal.type}}</span>
             <div><a href="/animals/{{animal.id}}">More information</a></div>
             <a href="/animals/{{animal.id}}/edit">edit</a>
             <form action="animals/{{animal.id}}/delete" method="POST"><button>X</button></form>
         </div>
-        <hr>
     </div>
+    </div>
+    <hr>
     {% endfor %}
 </div>
 

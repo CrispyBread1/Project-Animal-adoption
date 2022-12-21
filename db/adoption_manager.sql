@@ -14,6 +14,7 @@ CREATE TABLE animals (
     name VARCHAR(255),
     dob VARCHAR(255),
     type VARCHAR(255),
-    description VARCHAR(255),   
+    description VARCHAR(255), 
+    img VARCHAR(255),
     shelter_id INT NOT NULL REFERENCES shelters(id)
 );

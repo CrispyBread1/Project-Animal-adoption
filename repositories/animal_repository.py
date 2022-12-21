@@ -4,8 +4,8 @@ from models.animal import Animal
 import repositories.shelter_repository as shelter_repository
 
 def save(animal):
-    sql = 'INSERT INTO animals (name, dob, type, description, shelter_id) VALUES (%s, %s, %s, %s, %s) RETURNING *'
-    values = (animal.name, animal.dob, animal.type, animal.description, animal.shelter.id)
+    sql = 'INSERT INTO animals (name, dob, type, description, img, shelter_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *'
+    values = (animal.name, animal.dob, animal.type, animal.description, animal.img, animal.shelter.id)
     results = run_sql(sql, values)
     id = results[0]['id']
     animal.id = id
@@ -19,7 +19,7 @@ def select_all():
 
     for row in results:
         shelter = shelter_repository.select(row['shelter_id'])
-        animal = Animal(row['name'], row['dob'], row['type'], row['description'], shelter, row['id'])
+        animal = Animal(row['name'], row['dob'], row['type'], row['description'], row['img'],shelter, row['id'])
         animals.append(animal)
     return animals
 
@@ -31,7 +31,7 @@ def select(id):
 
     if result is not None:
         shelter = shelter_repository.select(result['shelter_id'])
-        animal = Animal(result['name'], result['dob'], result['type'], result['description'], shelter, result['id'])
+        animal = Animal(result['name'], result['dob'], result['type'], result['description'], shelter, result['id'], result['img'])
     return animal
 
 def delete_all():

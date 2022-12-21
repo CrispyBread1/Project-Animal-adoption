@@ -19,3 +19,14 @@ body{
 .menu a{
     text-decoration: none;
 }
+
+.content{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.img {
+    display: flex;
+    flex-direction: row;
+}
