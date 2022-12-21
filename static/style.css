@@ -1,0 +1,21 @@
+body{
+    font-family: arial, sans-serif; font-size: 16px;
+}
+
+.title{
+    background-color: blue;
+    width: 3%;
+    border-radius: 2%;
+}
+
+.menu {
+    flex: auto;
+    display: flex;
+    gap: 2%;
+    list-style: none;
+    border-style: groove;
+}
+
+.menu a{
+    text-decoration: none;
+}

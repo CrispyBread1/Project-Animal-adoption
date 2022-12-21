@@ -1,6 +1,4 @@
-<head> 
-    <header> <h1>Terry's Toots</h1> </header>
-</head>
+
  
 {% extends "base.html" %} 
 {% block content %} 
@@ -8,6 +6,7 @@
 <div>
     <h3>All of Terry's Toots</h3>
     {% for animal in all_animals %}
+    <img src="img/shetlandpony">
     <div class="content">
         '{{ animal.name }}'
         <div class="information">
@@ -15,7 +14,6 @@
             <div><a href="/animals/{{animal.id}}">More information</a></div>
             <a href="/animals/{{animal.id}}/edit">edit</a>
             <form action="animals/{{animal.id}}/delete" method="POST"><button>X</button></form>
-            <p>{{animal.shelter.id}} {{animal.shelter.name}}</p>
         </div>
         <hr>
     </div>
