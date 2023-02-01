@@ -26,11 +26,15 @@
         <input type="text" id="description" name="description" value="{{animal.description}}">
     </div>
     <div>
+        <label for="img">Image Link:</label>
+        <input type="text" id="img" name="img" value="{{animal.img}}">
+    </div>
+    <div>
         <label for="shelter">Shelter:</label>
         <select id="shelter" name="shelter_id">
-            <option value="{{animals_current_shelter}}">{{all_shelters[animals_current_shelter - 1].name}}</option>
+            <option value="{{animals_current_shelter.id}}">{{animals_current_shelter.name}}</option>
             {% for shelter in all_shelters %}
-                {% if shelter.id != animals_current_shelter %}
+                {% if shelter.id != animals_current_shelter.id %}
                     <option value="{{shelter.id}}" > {{shelter.name}}</option>
                 {% endif %}
             {% endfor %}

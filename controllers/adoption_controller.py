@@ -28,7 +28,7 @@ def index_shelter():
 @adoption_blueprint.route("/animals/<id>")
 def show(id):
     animal = animal_repository.select(id)
-    shelter = shelter_repository.select(animal.shelter)
+    shelter = shelter_repository.select(animal.shelter.id)
     return render_template("pages/more_information.html", animal = animal, shelter = shelter)
 
 @adoption_blueprint.route("/shelter/<id>")
@@ -54,8 +54,9 @@ def create():
     type = request.form['type']
     description = request.form['description']
     shelter_id = request.form['shelter_id']
+    img = request.form['img']
     shelter = shelter_repository.select(shelter_id)
-    animal = Animal(name, dob, type, description, shelter)
+    animal = Animal(name, dob, type, description, img, shelter)
     animal_repository.save(animal)
     return redirect('/animals')
 
@@ -63,7 +64,8 @@ def create():
 def edit(id):
     animal = animal_repository.select(id)
     shelters = shelter_repository.select_all()
-    animals_current_shelter = animal.shelter
+    animals_current_shelter = shelter_repository.select(animal.shelter.id)
+    print(animals_current_shelter.name)
     return render_template("pages/edit.html", animal = animal, all_shelters = shelters, animals_current_shelter = animals_current_shelter)
 
 
@@ -73,8 +75,9 @@ def update(id):
     dob = request.form['dob']
     type = request.form['type']
     description = request.form['description']
+    img = request.form['img']
     shelter_id = request.form['shelter_id']
     shelter = shelter_repository.select(shelter_id)
-    animal = Animal(name, dob, type, description, shelter, id)
+    animal = Animal(name, dob, type, description, img, shelter, id)
     animal_repository.update(animal)
     return redirect("/animals")

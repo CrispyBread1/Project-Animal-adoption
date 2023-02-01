@@ -46,4 +46,3 @@ def update(shelter):
     values = [shelter.name, shelter.location, shelter.contact, shelter.id]
     run_sql(sql, values)
 
-

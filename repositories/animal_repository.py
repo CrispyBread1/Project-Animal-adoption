@@ -4,8 +4,8 @@ from models.animal import Animal
 import repositories.shelter_repository as shelter_repository
 
 def save(animal):
-    sql = 'INSERT INTO animals (name, dob, type, description, img, shelter_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *'
-    values = (animal.name, animal.dob, animal.type, animal.description, animal.img, animal.shelter.id)
+    sql = 'INSERT INTO animals (name, dob, type, description, shelter_id, img ) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *'
+    values = (animal.name, animal.dob, animal.type, animal.description, animal.shelter.id, animal.img)
     results = run_sql(sql, values)
     id = results[0]['id']
     animal.id = id
@@ -23,6 +23,7 @@ def select_all():
         animals.append(animal)
     return animals
 
+# Want to find a specific animal object and return it to the webpage
 def select(id):
     animal = None
     sql = "SELECT * FROM animals WHERE id = %s"
@@ -31,7 +32,7 @@ def select(id):
     
     if result is not None:
         shelter = shelter_repository.select(result['shelter_id'])
-        animal = Animal(result['name'], result['dob'], result['type'], result['description'], shelter, result['id'], result['img'])
+        animal = Animal(result['name'], result['dob'], result['type'], result['description'], result['img'], shelter, result['id'])
     return animal
 
 def delete_all():
@@ -44,8 +45,8 @@ def delete(id):
     run_sql(sql, values)
 
 def update(animal):
-    sql = "UPDATE animals SET (name, dob, type, description, shelter_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [animal.name, animal.dob, animal.type, animal.description, animal.shelter.id, animal.id]
+    sql = "UPDATE animals SET (name, dob, type, description, img, shelter_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [animal.name, animal.dob, animal.type, animal.description, animal.img, animal.shelter.id, animal.id]
     run_sql(sql, values)
 
 def animals_for_shelter(id):

@@ -25,6 +25,7 @@ animal3 = Animal("Big Bird", "3/7/18", "Penguin", "Biggest bird", "https://media
 animal_repository.save(animal3)
 animal4 = Animal("Furball", "7/12/22", "Brown Bear", "Favourite thing is cuddles", "https://img.freepik.com/premium-photo/funny-bear-cub-sits-ground-forest_265142-3241.jpg?w=2000", shelter1)
 animal_repository.save(animal4)
+animal5 = Animal("Dash", "17/09/16", "Dog", "Loves cheese", "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-732x549.jpg", shelter1)
 
-
+animal_repository.save(animal5)
 
